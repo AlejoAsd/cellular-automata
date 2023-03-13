@@ -13,12 +13,14 @@ def compile_rule(str_rule):
 
 
 if __name__ == '__main__':
-    width = 6
-    height = 5
+    width = 200
+    height = 200
 
     gen = Generator(3, compile_rule('01010101'))
-    values = gen.generate([1, 0, 0, 0, 1, 1], height)
+    # values = gen.generate([1, 0, 0, 0, 1, 1], height)
+    # values = gen.generate(random_line(width), height)
+    values = gen.generate([0]*100 + [1] + [0] * 99, height)
 
-    image = Image(6, height)
+    image = Image(width, height)
     values = image.process_values(values)
-    image.save('./test.png')
+    image.save('./test.png', 4)
