@@ -1,3 +1,5 @@
+import math
+
 from generator import Generator
 from random import randint
 
@@ -13,14 +15,14 @@ def compile_rule(str_rule):
 
 
 if __name__ == '__main__':
-    width = 200
-    height = 200
+    width = 1000
+    height = 1000
+    resolution = 3
 
-    gen = Generator(3, compile_rule('01010101'))
-    # values = gen.generate([1, 0, 0, 0, 1, 1], height)
-    # values = gen.generate(random_line(width), height)
-    values = gen.generate([0]*100 + [1] + [0] * 99, height)
-
-    image = Image(width, height)
-    values = image.process_values(values)
-    image.save('./test.png', 4)
+    for i in range(256):
+        print(i)
+        gen = Generator(resolution, i)
+        values = gen.generate(random_line(width), height)
+        image = Image(width, height)
+        image.process_values(values)
+        image.save('./' + str(i) + '.png', 4)

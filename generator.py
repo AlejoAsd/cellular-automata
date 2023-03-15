@@ -24,10 +24,7 @@ class Generator:
         pos -= self.resolution // 2
         window = []
         for i in range(pos, pos + self.resolution):
-            if i < 0 or i >= len(line):
-                window.append(0)
-            else:
-                window.append(line[i])
+            window.append(line[i % len(line)])
         return window
 
     def _compute_new_line_value(self, line, pos):
